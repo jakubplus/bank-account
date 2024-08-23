@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bank-account-app
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: php-fpm
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  web:
+    image: nginx:latest
+    container_name: bank-account-nginx
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+    depends_on:
+      - app
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bank-account-test
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: vendor/bin/phpunit --colors=always tests
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

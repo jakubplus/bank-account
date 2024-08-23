@@ -1,0 +1,59 @@
+# Composer dependencies
+/vendor/
+
+# Environment variables
+.env
+
+# Logs
+/logs/
+/*.log
+
+# PHPStorm project files
+.idea/
+
+/.vscode/
+
+/nbproject/
+
+# Symfony cache and logs (if applicable)
+/var/
+/cache/
+/logs/
+
+# Nginx logs
+/nginx/logs/
+
+# Docker files
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Generated files
+/public/bundles/
+/node_modules/
+/public/build/
+/var/
+/tmp/
+
+# PHPUnit result cache
+.phpunit.result.cache
+
+# MacOS system files
+.DS_Store
+
+# Thumbnails
+._*
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Ignore .env files (if any)
+.env.*
+!.env.example
+
+# Ignore Composer lock file if you're managing it in a different way
+/composer.lock
+
+# Ignore any custom IDE configurations
+*.swp
+*~
